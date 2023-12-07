@@ -17,10 +17,3 @@ fn main() -> Result<()> {
 
     Ok(())
 }
-
-// useless type redefinitions
-// type TypeClock i64; // file simulation_engine.go and
-// type IndLocalTrans int; // file transition.go
-// type TypeConst int; // file transition.go
-// type TransitionList []Transition; // file transition.go
-// type TransitionStack []IndLocalTrans; // file transition.go

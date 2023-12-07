@@ -92,15 +92,14 @@ impl Engine {
     fn fire(&mut self, estimulated_transition_index: usize) {
         let transition = self.lefs.transitions[estimulated_transition_index].clone();
 
-        // fire transitions at the current clock cycle
         for payload in &transition.iul_payloads {
             self.lefs.transitions[payload.transition_index].constant += payload.constant;
         }
 
-        // schedule transitions to happen at a future clock cycle
+        let cycle = transition.cycle + transition.duration;
         for payload in &transition.pul_payloads {
             let event = Event {
-                cycle: transition.cycle + transition.duration,
+                cycle,
                 transition_index: payload.transition_index,
                 constant: payload.constant,
             };
